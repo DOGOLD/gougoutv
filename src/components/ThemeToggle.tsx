@@ -8,31 +8,16 @@ export function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
   const { setTheme, resolvedTheme } = useTheme();
 
-  const setThemeColor = (theme?: string) => {
-    const meta = document.querySelector('meta[name="theme-color"]');
-    if (!meta) {
-      const meta = document.createElement('meta');
-      meta.name = 'theme-color';
-      meta.content = theme === 'dark' ? '#0c111c' : '#f9fbfe';
-      document.head.appendChild(meta);
-    } else {
-      meta.setAttribute('content', theme === 'dark' ? '#0c111c' : '#f9fbfe');
-    }
-  };
-
   useEffect(() => {
     setMounted(true);
-    setThemeColor(resolvedTheme);
-  }, [resolvedTheme]);
+  }, []);
 
   if (!mounted) {
-    // 渲染一个占位符以避免布局偏移
     return <div className='w-10 h-10' />;
   }
 
   const toggleTheme = () => {
     const targetTheme = resolvedTheme === 'dark' ? 'light' : 'dark';
-    setThemeColor(targetTheme);
     setTheme(targetTheme);
   };
 
@@ -43,9 +28,9 @@ export function ThemeToggle() {
       aria-label='Toggle theme'
     >
       {resolvedTheme === 'dark' ? (
-        <Sun className='w-full h-full' />
-      ) : (
         <Moon className='w-full h-full' />
+      ) : (
+        <Sun className='w-full h-full' />
       )}
     </button>
   );

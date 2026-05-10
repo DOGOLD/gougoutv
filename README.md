@@ -95,4 +95,12 @@ MIT License
 
 ---
 
+## 🙏 致谢
+
+**GouGouTV** 是在 [KatelyaTV](https://github.com/katelya77/KatelyaTV) 项目基础上进行二次开发的项目。
+
+感谢 KatelyaTV 原作者的开源贡献，为本项目提供了良好的架构和设计灵感。
+
+---
+
 ⭐ 如果你喜欢这个项目，请给个 Star！

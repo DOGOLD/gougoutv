@@ -338,6 +338,17 @@ export const UserMenu: React.FC = () => {
 
         {/* 菜单项 */}
         <div className='py-1'>
+          {/* 登录按钮 */}
+          {!authInfo?.username && (
+            <button
+              onClick={() => router.push('/login')}
+              className='w-full px-3 py-2 text-left flex items-center gap-2.5 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors text-sm'
+            >
+              <KeyRound className='w-4 h-4' />
+              <span className='font-medium'>管理员登录</span>
+            </button>
+          )}
+
           {/* 设置按钮 */}
           <button
             onClick={handleSettings}

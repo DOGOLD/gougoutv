@@ -12,12 +12,37 @@
   --bg-dark-900: #0a0a0f;
   --bg-dark-800: #12121a;
   --bg-dark-700: #1a1a24;
+  --bg-primary: #f9fafb;
+  --bg-secondary: #ffffff;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
+}
+
+/* 日间模式变量 */
+.light {
+  --bg-primary: #f9fafb;
+  --bg-secondary: #ffffff;
+  --text-primary: #111827;
+  --text-secondary: #6b7280;
 }
 
 body {
-  background: var(--bg-dark-900);
-  color: white;
   font-family: 'Inter', sans-serif;
+}
+
+/* 深色模式背景 - 使用 Tailwind dark mode */
+.dark body,
+:root.dark {
+  --bg-primary: var(--bg-dark-900);
+  --bg-secondary: var(--bg-dark-800);
+  --text-primary: #ffffff;
+  --text-secondary: #9ca3af;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Logo 动画 */
