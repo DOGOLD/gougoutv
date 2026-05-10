@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  # GouGouTV 应用服务
+  gougoutv:
+    image: ghcr.io/katelya77/gougoutv:latest
+    ports:
+      - "3000:3000"
+    environment:
+      # 数据库配置 - 使用 Redis
+      NEXT_PUBLIC_STORAGE_TYPE: redis
+      REDIS_URL: redis://gougoutv-redis:6379
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-}
+      REDIS_DATABASE: 0
+
+      # 站点访问密码配置
+      PASSWORD: ${PASSWORD:-}
+
+      # 其他必要的环境变量
+      NEXTAUTH_SECRET: ${NEXTAUTH_SECRET}
+      NEXTAUTH_URL: ${NEXTAUTH_URL:-http://localhost:3000}
+    depends_on:
+      - gougoutv-redis
+    restart: unless-stopped
+    networks:
+      - gougoutv-network
+
+  # Redis 数据库服务
+  gougoutv-redis:
+    image: redis:7-alpine
+    container_name: gougoutv-redis
+    command: redis-server --appendonly yes --maxmemory 256mb --maxmemory-policy allkeys-lru
+    volumes:
+      # 持久化数据存储
+      - gougoutv-redis-data:/data
+    restart: unless-stopped
+    networks:
+      - gougoutv-network
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  # Redis 数据卷
+  gougoutv-redis-data:
+    driver: local
+
+networks:
+  gougoutv-network:
+    driver: bridge

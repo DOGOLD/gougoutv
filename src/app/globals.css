@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --cyber-primary: #ff00ff;
+  --cyber-secondary: #00ffff;
+  --cyber-accent: #ff0080;
+  --cyber-purple: #8b5cf6;
+  --bg-dark-900: #0a0a0f;
+  --bg-dark-800: #12121a;
+  --bg-dark-700: #1a1a24;
+}
+
+body {
+  background: var(--bg-dark-900);
+  color: white;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Logo 动画 */
+@keyframes logo-pulse {
+  0%, 100% {
+    text-shadow: 0 0 20px var(--cyber-primary), 0 0 40px var(--cyber-primary);
+  }
+  50% {
+    text-shadow: 0 0 30px var(--cyber-primary), 0 0 60px var(--cyber-secondary), 0 0 80px var(--cyber-accent);
+  }
+}
+
+.main-gougoutv-logo {
+  font-size: 5rem;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  animation: logo-pulse 3s ease-in-out infinite;
+}
+
+.main-logo-container {
+  position: relative;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.logo-background-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 0, 255, 0.2) 0%, transparent 70%);
+  filter: blur(40px);
+}
+
+.main-logo-subtitle {
+  font-size: 1.2rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+}
+
+.logo-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: var(--cyber-primary);
+  border-radius: 50%;
+  animation: float 6s ease-in-out infinite;
+}
+
+.particle-1 { top: 20%; left: 20%; animation-delay: 0s; }
+.particle-2 { top: 30%; right: 25%; animation-delay: 1s; }
+.particle-3 { top: 70%; left: 30%; animation-delay: 2s; }
+.particle-4 { top: 60%; right: 20%; animation-delay: 3s; }
+.particle-5 { top: 40%; left: 60%; animation-delay: 1.5s; }
+.particle-6 { top: 80%; right: 50%; animation-delay: 2.5s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) scale(1); opacity: 0.5; }
+  50% { transform: translateY(-20px) scale(1.2); opacity: 1; }
+}
+
+.bottom-logo-container {
+  padding: 60px 0;
+  position: relative;
+}
+
+.bottom-logo {
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.floating-shapes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.shape {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border: 1px solid rgba(255, 0, 255, 0.2);
+  animation: float 8s ease-in-out infinite;
+}
+
+.shape:nth-child(1) { top: 10%; left: 10%; transform: rotate(45deg); animation-delay: 0s; }
+.shape:nth-child(2) { top: 20%; right: 15%; border-radius: 50%; animation-delay: 2s; }
+.shape:nth-child(3) { bottom: 20%; left: 20%; animation-delay: 4s; }
+.shape:nth-child(4) { bottom: 10%; right: 10%; transform: rotate(30deg); animation-delay: 6s; }
+
+/* 章节标题 */
+.section-title-neon {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--cyber-primary) 0%, var(--cyber-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* 霓虹渐变文字 */
+.neon-gradient-text {
+  background: linear-gradient(135deg, var(--cyber-primary) 0%, var(--cyber-secondary) 50%, var(--cyber-accent) 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
