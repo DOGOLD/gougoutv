@@ -3,24 +3,24 @@ version: '3.8'
 services:
   # GouGouTV 应用服务
   gougoutv:
-    image: ghcr.io/katelya77/gougoutv:latest
+    image: ghcr.io/dogold/gougoutv:latest
     ports:
       - "3000:3000"
     environment:
       # 使用本地存储模式（无需数据库）
       NEXT_PUBLIC_STORAGE_TYPE: localstorage
-      
+
       # 管理员账号配置
       USERNAME: ${USERNAME:-admin}
       PASSWORD: ${PASSWORD:-admin}
-      
+
       # 站点配置
       NEXT_PUBLIC_ENABLE_REGISTER: ${NEXT_PUBLIC_ENABLE_REGISTER:-true}
-      
+
       # 其他必要的环境变量
       NEXTAUTH_SECRET: ${NEXTAUTH_SECRET:-your-secret-key-here-change-in-production}
       NEXTAUTH_URL: ${NEXTAUTH_URL:-http://localhost:3000}
-      
+
       # 站点名称
       SITE_NAME: GouGouTV
     restart: unless-stopped

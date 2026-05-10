@@ -3,7 +3,7 @@ version: '3.8'
 services:
   # GouGouTV 应用服务
   gougoutv:
-    image: ghcr.io/katelya77/gougoutv:latest
+    image: ghcr.io/dogold/gougoutv:latest
     ports:
       - "3000:3000"
     environment:
